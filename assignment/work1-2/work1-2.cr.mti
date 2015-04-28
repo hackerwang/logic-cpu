@@ -1,0 +1,22 @@
+F:/Git/verilog/assignment/work1-2/mux2x1.v {1 {vlog -work work1-2 -vopt F:/Git/verilog/assignment/work1-2/mux2x1.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module MUX2x1
+
+Top level modules:
+	MUX2x1
+
+} {} {}} F:/Git/verilog/assignment/work1-2/mux4x1.v {1 {vlog -work work1-2 -vopt F:/Git/verilog/assignment/work1-2/mux4x1.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module MUX4x1
+
+Top level modules:
+	MUX4x1
+
+} {} {}} F:/Git/verilog/assignment/work1-2/mux4x1_tb.v {1 {vlog -work work1-2 -vopt F:/Git/verilog/assignment/work1-2/mux4x1_tb.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module MUX4x1_tb
+
+Top level modules:
+	MUX4x1_tb
+
+} {} {}}

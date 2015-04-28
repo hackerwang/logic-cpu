@@ -1,0 +1,70 @@
+m255
+K4
+z2
+13
+cModel Technology
+Z0 dF:/Git/verilog/assignment/work1-2
+!s112 0.1
+!i10d 8192
+!i10e 25
+!i10f 100
+vMUX2x1
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+r1
+!s85 0
+31
+I:>cllL5m>75kR1Ch2=FU33
+Z2 dF:/Git/verilog/assignment/work1-2
+w1428642857
+8F:/Git/verilog/assignment/work1-2/mux2x1.v
+FF:/Git/verilog/assignment/work1-2/mux2x1.v
+L0 1
+Z3 OL;L;10.2c;57
+Z4 o-work work1-2 -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+n@m@u@x2x1
+!i10b 1
+!s100 QU5h]]a]Q;Rc06ZoM9M@71
+!s108 1428656493.434000
+!s107 F:/Git/verilog/assignment/work1-2/mux2x1.v|
+!s90 -reportprogress|300|-work|work1-2|-vopt|F:/Git/verilog/assignment/work1-2/mux2x1.v|
+!i111 0
+vMUX4x1
+R1
+r1
+31
+INKaP8@GTN8oifcDAFca>I3
+R2
+w1428656038
+8F:/Git/verilog/assignment/work1-2/mux4x1.v
+FF:/Git/verilog/assignment/work1-2/mux4x1.v
+L0 1
+R3
+R4
+n@m@u@x4x1
+!s85 0
+!i10b 1
+!s100 mzB1dT`RmfiYmRD8CAfVc2
+!s108 1428656493.590000
+!s107 F:/Git/verilog/assignment/work1-2/mux4x1.v|
+!s90 -reportprogress|300|-work|work1-2|-vopt|F:/Git/verilog/assignment/work1-2/mux4x1.v|
+!i111 0
+vMUX4x1_tb
+R1
+r1
+31
+I7b1U@Bj<kAMOO4OjnkVGN1
+R2
+w1428656458
+8F:/Git/verilog/assignment/work1-2/mux4x1_tb.v
+FF:/Git/verilog/assignment/work1-2/mux4x1_tb.v
+L0 1
+R3
+R4
+n@m@u@x4x1_tb
+!s85 0
+!i10b 1
+!s100 OhZYlgXSj4S]TB=8]5J]S1
+!s108 1428656493.246000
+!s107 F:/Git/verilog/assignment/work1-2/mux4x1_tb.v|
+!s90 -reportprogress|300|-work|work1-2|-vopt|F:/Git/verilog/assignment/work1-2/mux4x1_tb.v|
+!i111 0

@@ -1,0 +1,29 @@
+F:/Git/verilog/assignment/work3-2/dflipflop.v {1 {vlog -work work3-2 -vopt F:/Git/verilog/assignment/work3-2/dflipflop.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module DFlipFlop
+
+Top level modules:
+	DFlipFlop
+
+} {} {}} F:/Git/verilog/assignment/work3-2/shiftreg4.v {1 {vlog -work work3-2 -vopt F:/Git/verilog/assignment/work3-2/shiftreg4.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module ShiftReg4
+
+Top level modules:
+	ShiftReg4
+
+} {} {}} F:/Git/verilog/assignment/work3-2/shiftreg4_tb.v {1 {vlog -work work3-2 -vopt F:/Git/verilog/assignment/work3-2/shiftreg4_tb.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module ShiftReg4_tb
+
+Top level modules:
+	ShiftReg4_tb
+
+} {} {}} F:/Git/verilog/assignment/work3-2/mux2x1.v {1 {vlog -work work3-2 -vopt F:/Git/verilog/assignment/work3-2/mux2x1.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module MUX2x1
+
+Top level modules:
+	MUX2x1
+
+} {} {}}
