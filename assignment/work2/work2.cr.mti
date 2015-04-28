@@ -1,0 +1,8 @@
+F:/Git/verilog/assignment/work2/dec8_3.v {1 {vlog -work work2 -vopt F:/Git/verilog/assignment/work2/dec8_3.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module DEC8_3
+
+Top level modules:
+	DEC8_3
+
+} {} {}}

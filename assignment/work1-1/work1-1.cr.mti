@@ -1,0 +1,8 @@
+F:/Git/verilog/assignment/work1-1/mux2x1_tb.v {1 {vlog -work work1-1 -vopt F:/Git/verilog/assignment/work1-1/mux2x1_tb.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module MUX2x1_tb
+
+Top level modules:
+	MUX2x1_tb
+
+} {} {}}

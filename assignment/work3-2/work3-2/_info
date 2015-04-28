@@ -1,0 +1,90 @@
+m255
+K4
+z2
+13
+cModel Technology
+Z0 dF:/Git/verilog/assignment/work3-2
+!s112 0.1
+!i10d 8192
+!i10e 25
+!i10f 100
+vDFlipFlop
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+r1
+31
+I3Mc3LkVfFbAVhBieaiGG<1
+Z2 dF:/Git/verilog/assignment/work3-2
+w1428671660
+8F:/Git/verilog/assignment/work3-2/dflipflop.v
+FF:/Git/verilog/assignment/work3-2/dflipflop.v
+L0 1
+Z3 OL;L;10.2c;57
+Z4 o-work work3-2 -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+n@d@flip@flop
+!s85 0
+!i10b 1
+!s100 oZ9mSK=QR82LNHecIR8og2
+!s108 1428675265.991000
+!s107 F:/Git/verilog/assignment/work3-2/dflipflop.v|
+!s90 -reportprogress|300|-work|work3-2|-vopt|F:/Git/verilog/assignment/work3-2/dflipflop.v|
+!i111 0
+vMUX2x1
+R1
+r1
+31
+IDk5hQk350AG1mi:E8J^V91
+R2
+w1428642857
+8F:/Git/verilog/assignment/work3-2/mux2x1.v
+FF:/Git/verilog/assignment/work3-2/mux2x1.v
+L0 1
+R3
+R4
+n@m@u@x2x1
+!s85 0
+!i10b 1
+!s100 QU5h]]a]Q;Rc06ZoM9M@71
+!s108 1428675266.132000
+!s107 F:/Git/verilog/assignment/work3-2/mux2x1.v|
+!s90 -reportprogress|300|-work|work3-2|-vopt|F:/Git/verilog/assignment/work3-2/mux2x1.v|
+!i111 0
+vShiftReg4
+R1
+r1
+!s85 0
+31
+Iza]h8[=KZcM_lhHRfjG<B3
+R2
+w1428675683
+8F:/Git/verilog/assignment/work3-2/shiftreg4.v
+FF:/Git/verilog/assignment/work3-2/shiftreg4.v
+L0 1
+R3
+R4
+n@shift@reg4
+!i10b 1
+!s100 =g6O^kgDbcm_[g6Wz;d`@0
+!s108 1428675692.795000
+!s107 F:/Git/verilog/assignment/work3-2/shiftreg4.v|
+!s90 -reportprogress|300|-work|work3-2|-vopt|F:/Git/verilog/assignment/work3-2/shiftreg4.v|
+!i111 0
+vShiftReg4_tb
+R1
+r1
+31
+ImL7[;oO>cERRjG;XJ@QYE2
+R2
+w1428675201
+8F:/Git/verilog/assignment/work3-2/shiftreg4_tb.v
+FF:/Git/verilog/assignment/work3-2/shiftreg4_tb.v
+L0 1
+R3
+R4
+n@shift@reg4_tb
+!s85 0
+!i10b 1
+!s100 BZmkmWSHoJ]8OiCTWP=We0
+!s108 1428675265.930000
+!s107 F:/Git/verilog/assignment/work3-2/shiftreg4_tb.v|
+!s90 -reportprogress|300|-work|work3-2|-vopt|F:/Git/verilog/assignment/work3-2/shiftreg4_tb.v|
+!i111 0
