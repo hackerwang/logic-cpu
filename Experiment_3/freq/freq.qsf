@@ -18,14 +18,14 @@
 #
 # Quartus II 64-Bit
 # Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
-# Date created = 00:25:21  April 27, 2015
+# Date created = 16:35:33  May 12, 2015
 #
 # -------------------------------------------------------------------------- #
 #
 # Notes:
 #
 # 1) The default values for assignments are stored in the file:
-#		seq_assignment_defaults.qdf
+#		freq_assignment_defaults.qdf
 #    If this file doesn't exist, see file:
 #		assignment_defaults.qdf
 #
@@ -38,9 +38,9 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C35F672C6
-set_global_assignment -name TOP_LEVEL_ENTITY seq
+set_global_assignment -name TOP_LEVEL_ENTITY freq
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "00:25:21  APRIL 27, 2015"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:35:33  MAY 12, 2015"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
@@ -52,27 +52,46 @@ set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (Verilog)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name VERILOG_FILE freq.v
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_location_assignment PIN_V13 -to freqout0[6]
+set_location_assignment PIN_V14 -to freqout0[5]
+set_location_assignment PIN_AE11 -to freqout0[4]
+set_location_assignment PIN_AD11 -to freqout0[3]
+set_location_assignment PIN_AC12 -to freqout0[2]
+set_location_assignment PIN_AB12 -to freqout0[1]
+set_location_assignment PIN_AF10 -to freqout0[0]
+set_location_assignment PIN_AB24 -to freqout1[6]
+set_location_assignment PIN_AA23 -to freqout1[5]
+set_location_assignment PIN_AA24 -to freqout1[4]
+set_location_assignment PIN_Y22 -to freqout1[3]
+set_location_assignment PIN_W21 -to freqout1[2]
+set_location_assignment PIN_V21 -to freqout1[1]
+set_location_assignment PIN_V20 -to freqout1[0]
+set_location_assignment PIN_Y24 -to freqout2[6]
+set_location_assignment PIN_AB25 -to freqout2[5]
+set_location_assignment PIN_AB26 -to freqout2[4]
+set_location_assignment PIN_AC26 -to freqout2[3]
+set_location_assignment PIN_AC25 -to freqout2[2]
+set_location_assignment PIN_V22 -to freqout2[1]
+set_location_assignment PIN_AB23 -to freqout2[0]
+set_location_assignment PIN_W24 -to freqout3[6]
+set_location_assignment PIN_U22 -to freqout3[5]
+set_location_assignment PIN_Y25 -to freqout3[4]
+set_location_assignment PIN_Y26 -to freqout3[3]
+set_location_assignment PIN_AA26 -to freqout3[2]
+set_location_assignment PIN_AA25 -to freqout3[1]
+set_location_assignment PIN_Y23 -to freqout3[0]
+set_location_assignment PIN_P25 -to modein
+set_location_assignment PIN_AE23 -to modeout
+set_location_assignment PIN_N23 -to rst
+set_location_assignment PIN_N26 -to select[1]
+set_location_assignment PIN_N25 -to select[0]
+set_location_assignment PIN_N2 -to sysclk
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
-set_global_assignment -name USE_CONFIGURATION_DEVICE ON
-set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
-set_location_assignment PIN_G26 -to clk
-set_location_assignment PIN_AE23 -to dout
-set_location_assignment PIN_N23 -to rst
-set_location_assignment PIN_AC22 -to state[2]
-set_location_assignment PIN_AB21 -to state[1]
-set_location_assignment PIN_AF23 -to state[0]
 set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
-set_location_assignment PIN_N25 -to din
-set_global_assignment -name VERILOG_TEST_BENCH_FILE seq_fsm_tb.v
-set_global_assignment -name VERILOG_FILE seq_fsm.v
-set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH seq_tb -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_NAME seq_tb -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id seq_tb
-set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 us" -section_id seq_tb
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME seq_tb -section_id seq_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE seq_fsm_tb.v -section_id seq_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
