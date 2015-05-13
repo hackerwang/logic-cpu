@@ -142,6 +142,7 @@ module ctrl_clk_gen(sysclk,ctrl_clk);
 	reg ctrl_clk;
 	reg [24:0] counter;
 	initial begin
+		ctrl_clk<=0;
 		counter<=24000000;
 	end
 	always@(posedge sysclk)
@@ -163,6 +164,7 @@ module div_10(sigin,sigout);
 	reg [2:0] counter;
 	initial begin
 		counter<=0;
+		sigout<=0;
 	end
 	always@(posedge sigin)
 	begin
@@ -212,7 +214,7 @@ endmodule
 
 module bcd7(din,dout);
 input 	[3:0]	din;
-output 	[6:0] 	dout;
+output 	[6:0] dout;
 
 assign	dout=(din==4'h0)?7'b1000000:
              (din==4'h1)?7'b1111001:
