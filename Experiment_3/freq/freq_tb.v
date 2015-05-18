@@ -8,26 +8,23 @@ module freq_tb;
 	
 	initial begin
 		sysclk<=0;
-		rst<=0;
+		rst<=1;
 		modein<=0;
 		select<=0'b00;
 	end
 	
 	initial fork
-		#10 rst<=1;
 		forever
 			#10 sysclk<=~sysclk;
 		forever
 			begin
-				#10 rst<=0;
-				#20 rst<=1;
-				#2000000000 select<=select+2'b01;
+				#3000000000 select<=select+1;
 				if (select==2'b10)
 					modein<=1;
 				else
 					modein<=0;
 			end
 	join
-	
+
 endmodule
 
