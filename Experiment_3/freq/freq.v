@@ -38,6 +38,8 @@ module freq(sysclk,rst,select,modein,modeout,freqout3,freqout2,freqout1,freqout0
 	begin
 		if (~rst)
 		begin
+			count_ena<=0;
+			lock<=0;
 			count_clear<=1;
 		end
 		else

@@ -1,16 +1,16 @@
-//·ÖÆµ
-//²¨ÌØÂÊ9600£¬È¡16±¶²ÉÑùÆµÂÊ
-//50000000/(16*9600) = 325.52
+// åˆ†é¢‘
+// æ³¢ç‰¹ç‡9600ï¼Œå–16å€é‡‡æ ·é¢‘ç‡
+// 50000000/(16*9600) = 325.52
 module clkdiv(clkin, clkout);
-	input clkin; //ÏµÍ³Ê±ÖÓ
-	output clkout; //²ÉÑùÊ±ÖÓ
+	input clkin; //ç³»ç»Ÿæ—¶é’Ÿ
+	output clkout; //é‡‡æ ·æ—¶é’Ÿ
 	reg clkout;
 	reg [15:0] cnt;
 	initial begin
 		cnt<=0;
 		clkout<=0;
 	end
-	always @(posedge clk) //·ÖÆµ½ø³Ì
+	always @(posedge clkin) //åˆ†é¢‘è¿›ç¨‹
 	begin
 		if(cnt == 16'd162)
 		begin

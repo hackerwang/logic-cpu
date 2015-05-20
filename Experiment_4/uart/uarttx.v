@@ -1,13 +1,13 @@
-//TODO: sendingµÄÂß¼­¿ÉÒÔºÍtx_statusµÄÂß¼­ºÏ²¢
+// TODO: sendingçš„é€»è¾‘å¯ä»¥å’Œtx_statusçš„é€»è¾‘åˆå¹¶
 module uarttx(clk, tx_data, tx_en, tx_status, txd);
 	input clk;
-	input [7:0] tx_data; 	//ĞèÒª·¢ËÍµÄÊı¾İ
-	input tx_en; 			//·¢ËÍÊ¹ÄÜ
-	output reg tx_status;	//×´Ì¬Ö¸Ê¾£¬¸ßÎª¿ÕÏĞ
+	input [7:0] tx_data; 	//éœ€è¦å‘é€çš„æ•°æ®
+	input tx_en; 			//å‘é€ä½¿èƒ½
+	output reg tx_status;	//çŠ¶æ€æŒ‡ç¤ºï¼Œé«˜ä¸ºç©ºé—²
 	output reg txd;
 	reg sending;
 	reg sigbuf, sigrise;
-	reg[7:0] cnt; 			//¼ÆÊıÆ÷
+	reg[7:0] cnt; 			//è®¡æ•°å™¨
 	
 	initial begin
 		cnt <= 1'b0;
@@ -18,30 +18,30 @@ module uarttx(clk, tx_data, tx_en, tx_status, txd);
 		sending <= 1'b0;
 	end
 	
-	//¼ì²âÊ¹ÄÜĞÅºÅµÄÉÏÉıÑØ
+	//æ£€æµ‹ä½¿èƒ½ä¿¡å·çš„ä¸Šå‡æ²¿
 	always @(posedge clk)
 	begin
 		sigbuf <= tx_en;
 		sigrise <= (~sigbuf) & tx_en;
 	end
 	
-	//Êı¾İ·¢ËÍ½ø³Ì¿ªÊ¼»ò½áÊø
+	//æ•°æ®å‘é€è¿›ç¨‹å¼€å§‹æˆ–ç»“æŸ
 	always @(posedge clk)
 	begin
-		if (sigrise && tx_status)	//µ±·¢ËÍÃüÁîÓĞĞ§ÇÒÏßÂ·Îª¿ÕÏĞÊ±£¬Æô¶¯ĞÂµÄÊı¾İ·¢ËÍ½ø³Ì
+		if (sigrise && tx_status)	//å½“å‘é€å‘½ä»¤æœ‰æ•ˆä¸”çº¿è·¯ä¸ºç©ºé—²æ—¶ï¼Œå¯åŠ¨æ–°çš„æ•°æ®å‘é€è¿›ç¨‹
 			sending <= 1'b1;
 		else
-			if(cnt == 8'd160) 		//Ò»¸ö×Ö½Ú·¢ËÍÍê³É
+			if(cnt == 8'd160) 		//ä¸€ä¸ªå­—èŠ‚å‘é€å®Œæˆ
 				sending <= 1'b0;
 	end
 	
-	//Êı¾İ·¢ËÍ½ø³Ì
+	//æ•°æ®å‘é€è¿›ç¨‹
 	always @(posedge clk)
 	begin
 		if (sending)
 		begin
 			case(cnt)
-				//ÆğÊ¼Î»
+				//èµ·å§‹ä½
 				8'd0:
 					begin
 						txd <= 1'b0;
@@ -97,14 +97,14 @@ module uarttx(clk, tx_data, tx_en, tx_status, txd);
 						tx_status <= 1'b0;
 						cnt <= cnt + 8'd1;
 					end
-				//Í£Ö¹Î»
+				//åœæ­¢ä½
 				8'd144:
 					begin
 						txd <= 1'b1;
 						tx_status <= 1'b0;
 						cnt <= cnt + 8'd1;
 					end
-				//¿ÕÏĞ
+				//ç©ºé—²
 				8'd160:
 					begin
 						txd <= 1'b1;

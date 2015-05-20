@@ -1,4 +1,4 @@
-module uartrx(clk, rxd, rx_dataout, rx_status);
+module uartrx(clk, rxd, rx_data, rx_status);
 	input clk, rxd;
 	output reg [7:0] rx_data;
 	output reg rx_status;
@@ -12,22 +12,22 @@ module uartrx(clk, rxd, rx_dataout, rx_status);
 		sigbuf <= 1'b1;
 		sigfall <= 1'b0;
 		receiving <= 1'b0;
-		idle <= 1'b1;		//1±íÊ¾¿ÕÏÐ
+		idle <= 1'b1;		//1è¡¨ç¤ºç©ºé—²
 	end
 	
-	//¼ì²âÊäÈëÐÅºÅÏÂ½µÑØ
+	//æ£€æµ‹è¾“å…¥ä¿¡å·ä¸‹é™æ²¿
 	always @(posedge clk) 
 	begin
 		sigbuf <= rxd;
-		sigfall <= sigbuf & (~rx);
+		sigfall <= sigbuf & (~rxd);
 	end
 	
 	always @(posedge clk)
 	begin
-		if (sigfall && idle) //¼ì²âµ½ÐÅºÅÏÂ½µÑØ²¢ÇÒÔ­ÏÈÏßÂ·Îª¿ÕÏÐ£¬Æô¶¯½ÓÊÕÊý¾Ý½ø³Ì
+		if (sigfall && idle) //æ£€æµ‹åˆ°ä¿¡å·ä¸‹é™æ²¿å¹¶ä¸”åŽŸå…ˆçº¿è·¯ä¸ºç©ºé—²ï¼Œå¯åŠ¨æŽ¥æ”¶æ•°æ®è¿›ç¨‹
 			receiving <= 1'b1;
 		else
-			if(cnt == 8'd152) //½ÓÊÕÊý¾ÝÍê³É
+			if(cnt == 8'd152) //æŽ¥æ”¶æ•°æ®å®Œæˆ
 				receiving <= 1'b0;
 	end
 
@@ -36,7 +36,7 @@ module uartrx(clk, rxd, rx_dataout, rx_status);
 		if (receiving)
 		begin
 			case (cnt)
-				//ÆðÊ¼Î»
+				//èµ·å§‹ä½
 				8'd0:
 					begin
 						idle <= 1'b0;
@@ -100,7 +100,7 @@ module uartrx(clk, rxd, rx_dataout, rx_status);
 						cnt <= cnt + 8'd1;
 						rx_status <= 1'b0;
 					end
-				//Í£Ö¹Î»
+				//åœæ­¢ä½
 				8'd152: 
 					begin
 						idle <= 1'b0;
