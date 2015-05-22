@@ -12,7 +12,7 @@ module uart(sysclk,reset,rxd,txd);
 		tx_data <= 8'b0;
 		tx_ready <= 1'b0;
 		tmp_data <= 8'b0;
-		rx_status_buf <= 1'b0;
+		rx_status_buf <= 1'b1;
 	end
 	
 	//16倍波特率时钟
@@ -36,7 +36,7 @@ module uart(sysclk,reset,rxd,txd);
 			if (tx_status)
 			begin
 				tx_data <= tx_data + 8'd1; //每次数据加“1”
-				tx_en <= 1'b1; //产生发送命令
+				tx_en <= 1'b1;
 			end
 			else
 				tx_en <= 1'b0;
@@ -52,7 +52,7 @@ module uart(sysclk,reset,rxd,txd);
 				tx_data <= 8'b0;
 				tx_ready <= 1'b0;
 				tmp_data <= 8'b0;
-				rx_status_buf <= 1'b0;
+				rx_status_buf <= 1'b1;
 			end
 		else
 			begin
@@ -61,7 +61,7 @@ module uart(sysclk,reset,rxd,txd);
 				if ((~rx_status_buf) && rx_status)
 					begin
 						if (rx_data[7])
-							tmp_data = ~rx_data;
+							tmp_data = (~rx_data) | 8'b1000_0000;
 						else
 							tmp_data = rx_data;
 						//发送数据准备好了
@@ -77,6 +77,5 @@ module uart(sysclk,reset,rxd,txd);
 				else if (tx_en) tx_en<=1'b0;
 			end
 	end
-	
 	
 endmodule

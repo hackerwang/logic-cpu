@@ -10,7 +10,7 @@ module clkdiv(clkin, clkout);
 		cnt<=0;
 		clkout<=0;
 	end
-	always @(posedge clkin) //分频进程
+	always @(posedge clkin)
 	begin
 		if(cnt == 16'd162)
 		begin
