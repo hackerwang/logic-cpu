@@ -1,0 +1,50 @@
+F:/Git/verilog/CPUcontroller/simulation2/ALU.v {1 {vlog -work work -vopt F:/Git/verilog/CPUcontroller/simulation2/ALU.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} F:/Git/verilog/CPUcontroller/simulation2/DataMemory.v {1 {vlog -work work -vopt F:/Git/verilog/CPUcontroller/simulation2/DataMemory.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module DataMemory
+
+Top level modules:
+	DataMemory
+
+} {} {}} F:/Git/verilog/CPUcontroller/simulation2/ALUControl.v {1 {vlog -work work -vopt F:/Git/verilog/CPUcontroller/simulation2/ALUControl.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module ALUControl
+
+Top level modules:
+	ALUControl
+
+} {} {}} F:/Git/verilog/CPUcontroller/simulation2/test_cpu.v {1 {vlog -work work -vopt F:/Git/verilog/CPUcontroller/simulation2/test_cpu.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module test_cpu
+
+Top level modules:
+	test_cpu
+
+} {} {}} F:/Git/verilog/CPUcontroller/simulation2/CPU.v {1 {vlog -work work -vopt F:/Git/verilog/CPUcontroller/simulation2/CPU.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module CPU
+
+Top level modules:
+	CPU
+
+} {} {}} F:/Git/verilog/CPUcontroller/simulation2/RegisterFile.v {1 {vlog -work work -vopt F:/Git/verilog/CPUcontroller/simulation2/RegisterFile.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module RegisterFile
+
+Top level modules:
+	RegisterFile
+
+} {} {}} F:/Git/verilog/CPUcontroller/simulation2/Control.v {1 {vlog -work work -vopt F:/Git/verilog/CPUcontroller/simulation2/Control.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module Control
+
+Top level modules:
+	Control
+
+} {} {}}

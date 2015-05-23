@@ -1,0 +1,170 @@
+m255
+K4
+z2
+13
+cModel Technology
+Z0 dD:/modeltech64_10.2c/examples
+!s112 0.1
+!i10d 8192
+!i10e 25
+!i10f 100
+vALU
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+r1
+31
+Z2 I<h>YHmE58FOF]cg?2fX:c3
+Z3 dF:/Git/verilog/CPUcontroller/simulation1
+Z4 w1430680053
+Z5 8F:/Git/verilog/CPUcontroller/simulation1/ALU.v
+Z6 FF:/Git/verilog/CPUcontroller/simulation1/ALU.v
+L0 2
+Z7 OL;L;10.2c;57
+Z8 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+Z9 n@a@l@u
+!s85 0
+Z10 !s100 4Pz3oe6G]NZnS>h;E9C>H0
+Z11 !s108 1432309444.151000
+Z12 !s107 F:/Git/verilog/CPUcontroller/simulation1/ALU.v|
+Z13 !s90 -reportprogress|300|-work|work|-vopt|F:/Git/verilog/CPUcontroller/simulation1/ALU.v|
+!i10b 1
+!i111 0
+vALUControl
+R1
+r1
+31
+Z14 Ifh8L>YQQgQ`P7W[eoZkCL3
+R3
+Z15 w1431089060
+Z16 8F:/Git/verilog/CPUcontroller/simulation1/ALUControl.v
+Z17 FF:/Git/verilog/CPUcontroller/simulation1/ALUControl.v
+L0 2
+R7
+R8
+Z18 n@a@l@u@control
+!s85 0
+Z19 !s100 ;^=nOTYH83<aWeF6SfB343
+Z20 !s108 1432309444.245000
+Z21 !s107 F:/Git/verilog/CPUcontroller/simulation1/ALUControl.v|
+Z22 !s90 -reportprogress|300|-work|work|-vopt|F:/Git/verilog/CPUcontroller/simulation1/ALUControl.v|
+!i10b 1
+!i111 0
+vControl
+!s110 1432313225
+!i10b 1
+!s100 K2iOBQ2oiX@X9od9OeIhZ1
+IJZ7@OhG1A0dSE60]ZTGf40
+R1
+R3
+w1432313195
+Z23 8F:/Git/verilog/CPUcontroller/simulation1/Control.v
+Z24 FF:/Git/verilog/CPUcontroller/simulation1/Control.v
+L0 2
+R7
+r1
+!s85 0
+31
+!s108 1432313225.652000
+!s107 F:/Git/verilog/CPUcontroller/simulation1/Control.v|
+Z25 !s90 -reportprogress|300|-work|work|-vopt|F:/Git/verilog/CPUcontroller/simulation1/Control.v|
+!i111 0
+R8
+Z26 n@control
+vCPU
+R1
+r1
+31
+Z27 IOkX^aREW?Jj5h6FW_KXkG1
+R3
+Z28 w1431087660
+Z29 8F:/Git/verilog/CPUcontroller/simulation1/CPU.v
+Z30 FF:/Git/verilog/CPUcontroller/simulation1/CPU.v
+L0 2
+R7
+R8
+Z31 n@c@p@u
+!s85 0
+Z32 !s100 ezR>4c5llm3GlDRKCTkLT2
+Z33 !s108 1432309444.401000
+Z34 !s107 F:/Git/verilog/CPUcontroller/simulation1/CPU.v|
+Z35 !s90 -reportprogress|300|-work|work|-vopt|F:/Git/verilog/CPUcontroller/simulation1/CPU.v|
+!i10b 1
+!i111 0
+vDataMemory
+R1
+r1
+31
+Z36 Ieg;2O`j]XZFDf1RP]VJL40
+R3
+Z37 w1430660811
+Z38 8F:/Git/verilog/CPUcontroller/simulation1/DataMemory.v
+Z39 FF:/Git/verilog/CPUcontroller/simulation1/DataMemory.v
+L0 2
+R7
+R8
+Z40 n@data@memory
+!s85 0
+Z41 !s100 mL9O>ChNT>;;>5PR_8lo_2
+Z42 !s108 1432309444.510000
+Z43 !s107 F:/Git/verilog/CPUcontroller/simulation1/DataMemory.v|
+Z44 !s90 -reportprogress|300|-work|work|-vopt|F:/Git/verilog/CPUcontroller/simulation1/DataMemory.v|
+!i10b 1
+!i111 0
+vInstructionMemory
+R1
+r1
+31
+Z45 IO[W9RzXziY_iG7UE1Z9oW3
+R3
+Z46 w1432123293
+Z47 8F:/Git/verilog/CPUcontroller/simulation1/InstructionMemory.v
+Z48 FF:/Git/verilog/CPUcontroller/simulation1/InstructionMemory.v
+L0 2
+R7
+R8
+Z49 n@instruction@memory
+!s85 0
+Z50 !s100 d:nCQ:44:8MO^PXHFTnnA1
+Z51 !s108 1432309444.588000
+Z52 !s107 F:/Git/verilog/CPUcontroller/simulation1/InstructionMemory.v|
+Z53 !s90 -reportprogress|300|-work|work|-vopt|F:/Git/verilog/CPUcontroller/simulation1/InstructionMemory.v|
+!i10b 1
+!i111 0
+vRegisterFile
+R1
+r1
+31
+Z54 IgB0;=e6T9DFRFZZnGR>kz3
+R3
+Z55 w1430661201
+Z56 8F:/Git/verilog/CPUcontroller/simulation1/RegisterFile.v
+Z57 FF:/Git/verilog/CPUcontroller/simulation1/RegisterFile.v
+L0 2
+R7
+R8
+Z58 n@register@file
+!s85 0
+!i10b 1
+Z59 !s100 RK0lSA:DdMmBbDbeGMT[<0
+Z60 !s108 1432309444.807000
+Z61 !s107 F:/Git/verilog/CPUcontroller/simulation1/RegisterFile.v|
+Z62 !s90 -reportprogress|300|-work|work|-vopt|F:/Git/verilog/CPUcontroller/simulation1/RegisterFile.v|
+!i111 0
+vtest_cpu
+R1
+r1
+31
+Z63 IYg:AZz:6dRk0:aj?5JTIV0
+R3
+Z64 w1431076596
+Z65 8F:/Git/verilog/CPUcontroller/simulation1/test_cpu.v
+Z66 FF:/Git/verilog/CPUcontroller/simulation1/test_cpu.v
+L0 2
+R7
+R8
+!s85 0
+Z67 !s100 B;QPkGXmT76eoIP6l`[C>2
+Z68 !s108 1432309443.995000
+Z69 !s107 F:/Git/verilog/CPUcontroller/simulation1/test_cpu.v|
+Z70 !s90 -reportprogress|300|-work|work|-vopt|F:/Git/verilog/CPUcontroller/simulation1/test_cpu.v|
+!i10b 1
+!i111 0
