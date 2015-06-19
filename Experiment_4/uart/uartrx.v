@@ -98,13 +98,13 @@ module uartrx(clk, rxd, rx_data, rx_status);
 						idle <= 1'b0;
 						rx_data[7] <= rxd;
 						cnt <= cnt + 8'd1;
-						rx_status <= 1'b0;
+						rx_status <= 1'b1;
 					end
 				//停止位
 				8'd152: 
 					begin
 						idle <= 1'b0;
-						rx_status <= rxd;
+						rx_status <= 1'b1;
 						cnt <= 8'd0;
 					end
 				default:

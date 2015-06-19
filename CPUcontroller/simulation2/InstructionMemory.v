@@ -38,7 +38,7 @@ module InstructionMemory(Address, Instruction);
 			// addi $sp, $sp, 8
 			8'd15:   Instruction <= {6'h08, 5'd29, 5'd29, 16'h0008};
 			// add $v0, $a0, $v0
-			8'd16:   Instruction <= {6'h00, 5'd02, 5'd04, 5'd02, 5'd00, 6'h20};
+			8'd16:   Instruction <= {6'h00, 5'd04, 5'd02, 5'd02, 5'd00, 6'h20};
 			// jr $ra
 			8'd17:   Instruction <= {6'h00, 5'd31, 15'h0000, 6'h08};
 			default: Instruction <= 32'h00000000;

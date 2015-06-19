@@ -16,7 +16,8 @@
             \subsubsection*{1.由RegDst信号控制的多路选择器，输入2对应常数31。这里的31代表什么？在执行哪些指令时需要RegDst 信号为2？为什么？}
             31代表31号寄存器(\$ra)。
 
-            在执行jal、jalr(rd取默认值31)指令时需要RegDst信号为2，将当前指令的下一句的指令存储器地址写入\$ra寄存器，供程序跳转返回时使用。
+            在执行jal指令时需要RegDst信号为2，将当前指令的下一句的指令存储器地址写入\$ra寄存器，供程序跳转返回时使用。\\
+            （教材附录中说，jalr中的rd默认值为31，当未指定rd时，由汇编器将rd置为31，或者由硬件将RegDst设为2。）
             \subsubsection*{2.由ALUSrc1信号控制的多路选择器，输入1对应的指令[10-6]是什么？在执行哪些指令时需要ALUSrc1信号为1？为什么？}
             指令[10-6]是移位偏移量shamt[4:0]。
 
@@ -34,7 +35,7 @@
 
             用最高位(符号位)填充高位时，ExtOp为1；否则ExtOp为0。
             \subsubsection*{6.若想再多实现一条指令nop（空指令），指令格式为全0，需要如何修改处理器结构？}
-            空指令可以用sll \$0,\$0,0实现。不必改动现有的数据通路，只需要修改控制器，将nop解释为从0号寄存器取值，左移0位，再存入0号寄存器即可。
+            空指令可以用sll \$0,\$0,0实现。不必改动现有的数据通路，只需将nop解释为从0号寄存器取值，左移0位，再存入0号寄存器即可。
         \subsection{填写真值表}
             \begin{longtable}{cccccccccccc}
                 \multicolumn{12}{r}{接上页} \\
@@ -88,20 +89,20 @@
             \subsubsection*{这段程序执行足够长时间后会发生什么？}
             程序停在Loop: j Loop语句。
             \subsubsection*{此时寄存器\$a0\~{}\$a3,\$t0\~{}\$t2,\$v0\~{}\$v1中的值应是多少？写出计算过程。}
-            \texttt{\begin{longtable}{ll}
-                addi \$a0, \$zero, 12345 & \$a0=0x00003039 \\
-                addiu \$a1, \$zero, -11215 & \$a1=0x0000d431 \\
-                sll \$a2, \$a1, 16 & \$a2=0xd4310000 \\
-                sra \$a3, \$a2, 16 & \$a3=0xffffd431 \\
-                beq \$a3, \$a1, L1 & \$a3$\not=$\$a1 \\
-                lui \$a0, -11111 &  \$a0=0xd4990000 \\
-                L1: add \$t0, \$a2, \$a0 & \$t0=0xa8ca0000 \\
-                sra \$t1, \$t0, 8 & \$t1=0xffa8ca00 \\
-                addi \$t2, \$zero, -12345 & \$t2=0xffffcfc7 \\
-                slt \$v0, \$a0, \$t2 & \$a0<\$t2<0, 故\$v0=0x00000001 \\
-                sltu \$v1, \$a0, \$t2 & 0<\$a0<\$t2, 故\$v1=0x00000001\\
-                Loop: j Loop &  \\
-            \end{longtable}}
+            \texttt{\begin{tabular}{rll}
+                & addi \$a0, \$zero, 12345 & \$a0=0x00003039 \\
+                & addiu \$a1, \$zero, -11215 & \$a1=0x0000d431 \\
+                & sll \$a2, \$a1, 16 & \$a2=0xd4310000 \\
+                & sra \$a3, \$a2, 16 & \$a3=0xffffd431 \\
+                & beq \$a3, \$a1, L1 & \$a3$\not=$\$a1 \\
+                & lui \$a0, -11111 &  \$a0=0xd4990000 \\
+                L1: & add \$t0, \$a2, \$a0 & \$t0=0xa8ca0000 \\
+                & sra \$t1, \$t0, 8 & \$t1=0xffa8ca00 \\
+                & addi \$t2, \$zero, -12345 & \$t2=0xffffcfc7 \\
+                & slt \$v0, \$a0, \$t2 & \$a0<\$t2<0, 故\$v0=0x00000001 \\
+                & sltu \$v1, \$a0, \$t2 & 0<\$a0<\$t2, 故\$v1=0x00000001\\
+                Loop: & j Loop &  \\
+            \end{tabular}}
             \subsubsection*{如果已知某一时刻在某寄存器中存放着数0xffffcfc7，能否判断出它是有符号数还是无符号数？为什么？}
             不能。0xffffcfc7可能表示无符号数4294954951，也有可能表示有符号数-12345。无符号数和有符号数在寄存器中不可区分，最高位是否当作符号位由指令决定。
         \subsection{ModelSim仿真}
@@ -131,26 +132,27 @@
 
             本例中，Loop是程序运行结束后停止的位置；sum是递归深度增加时压栈操作开始的位置；L1是递归深度控制变量\$a0改变的位置，其后的语句完成了继续递归、回溯弹栈、计算返回值等功能。
             \subsubsection*{为每一句代码添加注释。}
-            \texttt{\begin{longtable}{ll}
-                addi \$a0, \$zero, 3 & \$a0=3 \\
-                jal sum & 跳转至sum，并修改\$ra \\
-                Loop: \\ beq \$zero, \$zero, Loop & 停止在Loop处 \\
-                sum: \\ addi \$sp, \$sp, -8 & 栈指针下移2个字 \\
-                sw \$ra, 4(\$sp) & \$ra入栈 \\
-                sw \$a0, 0(\$sp) &  \$a0入栈 \\
-                slti \$t0, \$a0, 1 & \$t0 = \$a0 < 1 \\
-                beq \$t0, \$zero, L1 & \~{}\$t0则跳转至L1继续递归 \\
-                xor \$v0, \$zero, \$zero & \$v0清零 \\
-                addi \$sp, \$sp, 8 & 栈指针上移2个字 \\
-                jr \$ra & 根据\$ra存储的地址返回 \\
-                L1: \\ addi \$a0, \$a0, -1 & \$a0-- \\
-                jal sum & 跳转至sum，并修改\$ra \\
-                lw \$a0, 0(\$sp) & \$a0出栈 \\
-                lw \$ra, 4(\$sp) & \$ra出栈 \\
-                addi \$sp, \$sp, 8 & 栈指针上移2个字 \\
-                add \$v0, \$a0, \$v0 & \$v0 = \$a0 + \$v0\\
-                jr \$ra & 根据\$ra存储的地址返回 \\
-            \end{longtable}}
+            \texttt{\begin{tabular}{rll}
+                & addi \$a0, \$zero, 3 & \$a0=3 \\
+                & jal sum & 跳转至sum，并修改\$ra \\
+                Loop: & beq \$zero, \$zero, Loop & 停止在Loop处 \\
+                sum: & addi \$sp, \$sp, -8 & 栈指针下移2个字 \\
+                & sw \$ra, 4(\$sp) & \$ra入栈 \\
+                & sw \$a0, 0(\$sp) &  \$a0入栈 \\
+                & slti \$t0, \$a0, 1 & \$t0 = \$a0 < 1 \\
+                & beq \$t0, \$zero, L1 & \~{}\$t0则跳转至L1继续递归 \\
+                & xor \$v0, \$zero, \$zero & \$v0清零 \\
+                & addi \$sp, \$sp, 8 & 栈指针上移2个字 \\
+                & jr \$ra & 根据\$ra存储的地址返回 \\
+                L1: & addi \$a0, \$a0, -1 & \$a0-- \\
+                & jal sum & 跳转至sum，并修改\$ra \\
+                & lw \$a0, 0(\$sp) & \$a0出栈 \\
+                & lw \$ra, 4(\$sp) & \$ra出栈 \\
+                & addi \$sp, \$sp, 8 & 栈指针上移2个字 \\
+                & add \$v0, \$a0, \$v0 & \$v0 = \$a0 + \$v0\\
+                & jr \$ra & 根据\$ra存储的地址返回 \\
+            \end{tabular}}
+
         \subsection{将汇编程序翻译为机器码}
             \subsubsection*{对于beq和jal语句中的Loop，sum，L1，你是怎么翻译的？立即数-1、-8被翻译成了什么（用16进制或2进制表示）？}
             beq语句中的地址字段是目标位置相对当前指令的下一条指令位置的偏移量(字数)，因此beq \$zero, \$zero, Loop中的Loop应当翻译为-1，beq \$t0, \$zero, L1中的L1应当翻译为3。
@@ -159,30 +161,28 @@
 
             立即数-1翻译为0xffff，-8翻译为0xfff8。
 
-            ~\\
-
             翻译后的机器码对应如下：
 
-            \texttt{\begin{longtable}{ll}
-                addi \$a0, \$zero, 3 & \{6'h08, 5'd00, 5'd04, 16'h0003\}; \\
-                jal sum & \{6'h03, 26'h0000003\}; \\
-                Loop: \\ beq \$zero, \$zero, Loop & \{6'h04, 5'd00, 5'd00, 16'hffff\}; \\
-                sum: \\ addi \$sp, \$sp, -8 & \{6'h08, 5'd29, 5'd29, 16'hfff8\}; \\
-                sw \$ra, 4(\$sp) & \{6'h2b, 5'd29, 5'd31, 16'h0004\}; \\
-                sw \$a0, 0(\$sp) & \{6'h2b, 5'd29, 5'd04, 16'h0000\}; \\
-                slti \$t0, \$a0, 1 & \{6'h0a, 5'd04, 5'd08, 16'h0001\}; \\
-                beq \$t0, \$zero, L1 & \{6'h04, 5'd00, 5'd08, 16'h0003\}; \\
-                xor \$v0, \$zero, \$zero & \{6'h00, 5'd00, 5'd00, 5'd02, 5'd00, 6'h26\}; \\
-                addi \$sp, \$sp, 8 & \{6'h08, 5'd29, 5'd29, 16'h0008\}; \\
-                jr \$ra & \{6'h00, 5'd31, 15'h0000, 6'h08\}; \\
-                L1: \\ addi \$a0, \$a0, -1 & \{6'h08, 5'd04, 5'd04, 16'hffff\}; \\
-                jal sum & \{6'h03, 26'h0000003\}; \\
-                lw \$a0, 0(\$sp) & \{6'h23, 5'd29, 5'd04, 16'h0000\}; \\
-                lw \$ra, 4(\$sp) & \{6'h23, 5'd29, 5'd31, 16'h0004\}; \\
-                addi \$sp, \$sp, 8 & \{6'h08, 5'd29, 5'd29, 16'h0008\}; \\
-                add \$v0, \$a0, \$v0 & \{6'h00, 5'd02, 5'd04, 5'd02, 5'd00, 6'h20\}; \\
-                jr \$ra & \{6'h00, 5'd31, 15'h0000, 6'h08\}; \\
-            \end{longtable}}
+            \texttt{\begin{tabular}{rll}
+                & addi \$a0, \$zero, 3 & \{6'h08, 5'd00, 5'd04, 16'h0003\}; \\
+                & jal sum & \{6'h03, 26'h0000003\}; \\
+                Loop: & beq \$zero, \$zero, Loop & \{6'h04, 5'd00, 5'd00, 16'hffff\}; \\
+                sum: & addi \$sp, \$sp, -8 & \{6'h08, 5'd29, 5'd29, 16'hfff8\}; \\
+                & sw \$ra, 4(\$sp) & \{6'h2b, 5'd29, 5'd31, 16'h0004\}; \\
+                & sw \$a0, 0(\$sp) & \{6'h2b, 5'd29, 5'd04, 16'h0000\}; \\
+                & slti \$t0, \$a0, 1 & \{6'h0a, 5'd04, 5'd08, 16'h0001\}; \\
+                & beq \$t0, \$zero, L1 & \{6'h04, 5'd00, 5'd08, 16'h0003\}; \\
+                & xor \$v0, \$zero, \$zero & \{6'h00, 5'd00, 5'd00, 5'd02, 5'd00, 6'h26\}; \\
+                & addi \$sp, \$sp, 8 & \{6'h08, 5'd29, 5'd29, 16'h0008\}; \\
+                & jr \$ra & \{6'h00, 5'd31, 15'h0000, 6'h08\}; \\
+                L1: & addi \$a0, \$a0, -1 & \{6'h08, 5'd04, 5'd04, 16'hffff\}; \\
+                & jal sum & \{6'h03, 26'h0000003\}; \\
+                & lw \$a0, 0(\$sp) & \{6'h23, 5'd29, 5'd04, 16'h0000\}; \\
+                & lw \$ra, 4(\$sp) & \{6'h23, 5'd29, 5'd31, 16'h0004\}; \\
+                & addi \$sp, \$sp, 8 & \{6'h08, 5'd29, 5'd29, 16'h0008\}; \\
+                & add \$v0, \$a0, \$v0 & \{6'h00, 5'd04, 5'd02, 5'd02, 5'd00, 6'h20\}; \\
+                & jr \$ra & \{6'h00, 5'd31, 15'h0000, 6'h08\}; \\
+            \end{tabular}}
         \subsection{ModelSim仿真}
             \subsubsection*{运行时间足够长之后（如5000ns时），寄存器\$a0,\$v0的值是多少？和你预期的程序功能是否一致？}
             \begin{figure}[htb]
@@ -196,25 +196,26 @@
             \texttt{
             0x00 $\rightarrow$ 0x04 $\xrightarrow{\text{跳转至sum}}$ 0x0c $\rightarrow$ 0x10  $\rightarrow$ 0x14 $\rightarrow$ 0x18 $\rightarrow$ 0x1c $\xrightarrow{\text{跳转至L1}}$ 0x2c $\rightarrow$ 0x30 $\xrightarrow{\text{跳转至sum}}$ 0x0c $\rightarrow$ 0x10 $\rightarrow$ 0x14 $\rightarrow$ 0x18 $\rightarrow$ 0x1c $\xrightarrow{\text{跳转至L1}}$ 0x2c $\rightarrow$ 0x30 $\xrightarrow{\text{跳转至sum}}$ 0x0c $\rightarrow$ 0x10  $\rightarrow$ 0x14 $\rightarrow$ 0x18 $\rightarrow$ 0x1c $\xrightarrow{\text{跳转至L1}}$ 0x2c $\rightarrow$ 0x30 $\xrightarrow{\text{跳转至sum}}$ 0x0c $\rightarrow$ 0x10 $\rightarrow$ 0x14 $\rightarrow$ 0x18 $\rightarrow$ 0x1c $\rightarrow$ 0x20 $\rightarrow$ 0x24 $\rightarrow$ 0x28 $\xrightarrow{\text{跳转至\$ra}}$ 0x34 $\rightarrow$ 0x38 $\rightarrow$ 0x3c $\rightarrow$ 0x40 $\rightarrow$ 0x44 $\xrightarrow{\text{跳转至\$ra}}$ 0x34 $\rightarrow$ 0x38 $\rightarrow$ 0x3c $\rightarrow$ 0x40 $\rightarrow$ 0x44 $\xrightarrow{\text{跳转至\$ra}}$ 0x34 $\rightarrow$ 0x38 $\rightarrow$ 0x3c $\rightarrow$ 0x40 $\rightarrow$ 0x44 $\xrightarrow{\text{跳转至\$ra}}$ 0x08
             ~\\}
-            
+
             \$a0的变化： \\
             \texttt{
             0x00 $\xrightarrow{\text{+3}}$ 0x03 $\xrightarrow{\text{压栈, -1}}$ 0x02 $\xrightarrow{\text{压栈, -1}}$ 0x01 $\xrightarrow{\text{压栈, -1}}$ 0x00 $\xrightarrow{\text{弹栈}}$ 0x01 $\xrightarrow{\text{弹栈}}$ 0x02 $\xrightarrow{\text{弹栈}}$ 0x03
             ~\\}
-            
+
             \$v0的变化： \\
             \texttt{
             0x00 $\xrightarrow{\text{清零}}$ 0x00 $\xrightarrow[\text{第3层递归, 回溯}]{\text{+\$a0}}$ 0x01 $\xrightarrow[\text{第2层递归, 回溯}]{\text{+\$a0}}$ 0x03 $\xrightarrow[\text{第1层递归, 回溯}]{\text{+\$a0}}$ 0x06
             ~\\}
-            
+
             \$sp的变化： \\
             \texttt{
-            0x00 $\xrightarrow[\text{第1层递归}]{\text{-8}}$ 0xf8 $\xrightarrow[\text{第2层递归}]{\text{-8}}$ 0xf0 $\xrightarrow[\text{第3层递归}]{\text{-8}}$ 0xe8 $\xrightarrow[\text{第4层递归}]{\text{-8}}$ 0xe0 $\xrightarrow[\text{第4层递归, 回溯}]{\text{+8}}$ 0xe8 $\xrightarrow[\text{第3层递归, 回溯}]{\text{+8}}$ 0xf0 $\xrightarrow[\text{第2层递归, 回溯}]{\text{+8}}$ 0xf8 $\xrightarrow[\text{第1层递归, 回溯}]{\text{+8}}$ 0x00
+            0x00 $\xrightarrow[\text{第1层递归}]{\text{-8}}$ 0xf8 $\xrightarrow[\text{第2层递归}]{\text{-8}}$ 0xf0 $\xrightarrow[\text{第3层递归}]{\text{-8}}$ 0xe8 $\xrightarrow[\text{第4层递归}]{\text{-8}}$ 0xe0 \\
+            $\xrightarrow[\text{第4层递归, 回溯}]{\text{+8}}$ 0xe8 $\xrightarrow[\text{第3层递归, 回溯}]{\text{+8}}$ 0xf0 $\xrightarrow[\text{第2层递归, 回溯}]{\text{+8}}$ 0xf8 $\xrightarrow[\text{第1层递归, 回溯}]{\text{+8}}$ 0x00
             ~\\}
-            
+
             \$ra的变化： \\
             \texttt{
             0x00 $\xrightarrow[\text{\$ra<=Line2Addr}]{\text{Line1: jal sum}}$ 0x08 $\xrightarrow[\text{第1层递归}]{\text{压栈}}$ $\xrightarrow[\text{\$ra<=Line13Addr}]{\text{Line12: jal sum}}$ 0x34 $\xrightarrow[\text{第2层递归}]{\text{压栈}}$ $\xrightarrow[\text{\$ra<=Line13Addr}]{\text{Line12: jal sum}}$ 0x34 $\xrightarrow[\text{第3层递归}]{\text{压栈}}$ $\xrightarrow[\text{\$ra<=Line13Addr}]{\text{Line12: jal sum}}$ 0x34 $\xrightarrow[\text{第4层递归}]{\text{压栈}}$ $\xrightarrow{\text{丢弃栈顶}}$ $\xrightarrow{\text{弹栈}}$ 0x34 $\xrightarrow{\text{弹栈}}$ 0x34 $\xrightarrow{\text{弹栈}}$ 0x08
             }
-            
+
 \end{document} 

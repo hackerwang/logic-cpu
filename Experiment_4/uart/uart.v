@@ -20,29 +20,6 @@ module uart(sysclk,reset,rxd,txd);
 	uarttx tx0(clk, tx_data, tx_en, tx_status, txd);
 	uartrx rx0(clk, rxd, rx_data, rx_status);
 	
-	//发送测试
-	/*
-	always @(posedge clk or negedge reset)
-	begin
-		if (~reset)
-		begin
-			tx_en <= 1'b0;
-			tx_data <= 8'b0;
-			tx_ready <= 1'b0;
-			tmp_data <= 8'b0;
-			rx_status_buf <= 1'b0;
-		end
-		else
-			if (tx_status)
-			begin
-				tx_data <= tx_data + 8'd1; //每次数据加“1”
-				tx_en <= 1'b1;
-			end
-			else
-				tx_en <= 1'b0;
-	end
-	*/
-	
 	//UART控制
 	always @(posedge clk or negedge reset)
 	begin
@@ -74,7 +51,7 @@ module uart(sysclk,reset,rxd,txd);
 						tx_en<=1'b1;
 						tx_ready<=1'b0;
 					end
-				else if (tx_en) tx_en<=1'b0;
+				else if (~tx_status) tx_en<=1'b0;
 			end
 	end
 	
